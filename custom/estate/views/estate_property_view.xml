@@ -1,0 +1,26 @@
+<odoo>
+    <data noupdate="1">
+        <!-- Only loaded when installing the module (odoo-bin -i module) -->
+        <operation/>
+        <form string="Test">
+    <sheet>
+        <group>
+            <group>
+                <field name="name"/>
+            </group>
+            <group>
+                <field name="last_seen"/>
+            </group>
+            <notebook>
+                <page string="Description">
+                    <field name="description"/>
+                </page>
+            </notebook>
+        </group>
+    </sheet>
+</form>
+    </data>
+
+    <!-- (Re)Loaded at install and update (odoo-bin -i/-u) -->
+    <operation/>
+</odoo>
