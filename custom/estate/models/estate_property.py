@@ -1,4 +1,7 @@
 from odoo import fields, models
+from datetime import date
+from dateutil.relativedelta import relativedelta
+
 
 
 class EstateProperty(models.Model):
@@ -17,21 +20,30 @@ class EstateProperty(models.Model):
     #_garden_orientation = "estate.property"
 
     name = fields.Char(required=True)
-    description = fields.Text()
-    postcode = fields.Char()
-    date_availability = fields.Date()
+    description = fields.Text(string='Description')
+    postcode = fields.Char(string='Postcode')
+    date_availability = fields.Date(copy=False, default=date.today() + relativedelta(months=+3))
     expected_price = fields.Float(required=True)
-    selling_price = fields.Float()
-    bedrooms = fields.Integer()
+    selling_price = fields.Float(copy=False, readonly=True)
+    bedrooms = fields.Integer(default=2)
     living_area = fields.Integer()
     facades = fields.Integer()
-    garage = fields.Boolean()
-    garden = fields.Boolean()
+    garage = fields.Boolean(readonly=False)
+    garden = fields.Boolean(readonly=False)
     garden_area = fields.Integer()
     garden_orientation = fields.Selection(
-        string='Type',
+        string='Garden Orientation',
         selection=[('north', 'North'), ('south', 'South'), ('east', 'East'), ('west', 'West')],
         help="Type is used to separate garden orientation"
+    )
+    active = fields.Boolean('Active', default=True, readonly=False)
+    state = fields.Selection(
+        required=True,
+        copy=False,
+        string='State',
+        selection=[('new', 'New'), ('received', 'Offer Received'), ('accepted', 'Offer Accepted'), ('sold', 'Sold'),
+                   ('canceled', 'Canceled')],
+        default="new"
     )
 
 
