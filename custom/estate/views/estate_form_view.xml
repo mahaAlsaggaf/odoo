@@ -13,6 +13,7 @@
                     </group>
                     <group>
                         <group>
+                            <field name="property_type_id" string="Property Type"/>
                             <field name="postcode"/>
                             <field name="date_availability"/>
                         </group>
@@ -34,7 +35,14 @@
                                     <field name="state" string="State"/>
                                 </group>
                             </page>
+<!--                            <page string="Other Info">-->
+<!--                                <group>-->
+<!--&lt;!&ndash;                                    <field name="description" string="Salesman"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <field name="bedrooms" string="Buyer"/>&ndash;&gt;-->
+<!--                                </group>-->
+<!--                            </page>-->
                         </notebook>
+
                     </group>
                 </sheet>
             </form>

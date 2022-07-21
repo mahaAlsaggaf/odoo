@@ -45,6 +45,7 @@ class EstateProperty(models.Model):
                    ('canceled', 'Canceled')],
         default="new"
     )
+    property_type_id = fields.Many2one(comodel_name="estate.property.type", string="Estate Property Type")
 
 
 
