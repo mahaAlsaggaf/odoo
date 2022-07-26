@@ -1,7 +1,6 @@
-from odoo import fields, models
+from odoo import api, fields, models
 from datetime import date
 from dateutil.relativedelta import relativedelta
-
 
 
 class EstateProperty(models.Model):
@@ -46,7 +45,10 @@ class EstateProperty(models.Model):
         default="new"
     )
     property_type_id = fields.Many2one(comodel_name="estate.property.type", string="Estate Property Type")
-
+    salesperson_id = fields.Many2one(comodel_name="res.partner", default=lambda self: self.env.user, string="Salesman")
+    buyer_id = fields.Many2one(comodel_name="res.users", copy=False, string="Buyer")
+    tag_id = fields.Many2many("estate.property.tag", string="Tags")
+    offer_id = fields.One2many("estate.property.offer", "property_id", copy=False, string="Offer")
 
 
 

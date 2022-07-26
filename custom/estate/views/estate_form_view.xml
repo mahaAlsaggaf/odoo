@@ -9,6 +9,7 @@
                     <group>
                         <h1>
                             <field name="name"/>
+                            <field name="tag_id" widget="many2many_tags"/>
                         </h1>
                     </group>
                     <group>
@@ -35,14 +36,18 @@
                                     <field name="state" string="State"/>
                                 </group>
                             </page>
-<!--                            <page string="Other Info">-->
-<!--                                <group>-->
-<!--&lt;!&ndash;                                    <field name="description" string="Salesman"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <field name="bedrooms" string="Buyer"/>&ndash;&gt;-->
-<!--                                </group>-->
-<!--                            </page>-->
+                            <page string="Offer">
+                              <group>
+                                    <field name="offer_id"/>
+                               </group>
+                            </page>
+                           <page string="Other Info">
+                              <group>
+                                    <field name="salesperson_id" string="Salesman"/>
+                                    <field name="buyer_id" string="Buyer"/>
+                               </group>
+                           </page>
                         </notebook>
-
                     </group>
                 </sheet>
             </form>
